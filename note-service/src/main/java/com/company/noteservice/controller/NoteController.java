@@ -2,6 +2,7 @@ package com.company.noteservice.controller;
 
 import com.company.noteservice.dao.NoteDao;
 import com.company.noteservice.models.Note;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,11 @@ import java.util.List;
 public class NoteController {
 
     private NoteDao dao;
+
+    @Autowired
+    public NoteController(NoteDao dao) {
+        this.dao = dao;
+    }
 
     //Create Note
     //===========

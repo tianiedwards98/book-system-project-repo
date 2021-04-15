@@ -30,13 +30,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ImportAutoConfiguration(RefreshAutoConfiguration.class)
 public class NoteControllerTest {
     @MockBean
-    NoteDao dao;
+    private NoteDao dao;
 
     @Autowired
     private MockMvc mockMvc;
 
     private ObjectMapper mapper = new ObjectMapper();
-
 
     @Before
     public void setUp() throws Exception {
@@ -97,18 +96,20 @@ public class NoteControllerTest {
     public void shouldReturnNewRecordOnPostRequest() throws Exception {
 
         // ARRANGE
-      Note inputNote = new Note();
-      inputNote.setBookId(1);
-      inputNote.setNote("notebook");
+        Note inputNote = new Note();
+        inputNote.setBookId(1);
+        inputNote.setNote("notebook");
         // Convert Java Object to JSON
         String inputJson = mapper.writeValueAsString(inputNote);
 
-       Note outputNote = new Note();
+        Note outputNote = new Note();
         outputNote.setBookId(2);
         outputNote.setNote("The River");
         outputNote.setNoteId(6);
 
         String outputJson = mapper.writeValueAsString(outputNote);
+
+        when(dao.createNote(inputNote)).thenReturn(outputNote);
 
         // ACT
         mockMvc.perform(
@@ -123,13 +124,14 @@ public class NoteControllerTest {
 
     @Test
     public void shouldReturnRecordById() throws Exception {
-
         Note outputNote = new Note();
         outputNote.setBookId(2);
         outputNote.setNote("The River");
         outputNote.setNoteId(6);
 
         String outputJson = mapper.writeValueAsString(outputNote);
+
+        when(dao.getNote(6)).thenReturn(outputNote);
 
         mockMvc.perform(get("/notes/6"))
                 .andDo(print())
