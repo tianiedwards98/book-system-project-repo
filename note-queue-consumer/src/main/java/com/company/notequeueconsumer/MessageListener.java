@@ -13,10 +13,9 @@ public class MessageListener {
     public void receiveMessage(Note note) {
         //Feign Client is used here, if checks have to be refined
         if(note.getNoteId() != 0) {
+            client.updateNote(note.getNoteId(),note);
+        } else{
             client.postNote(note);
-        }
-        if(note.getNoteId() == ) {
-            client.updateNote(note);
         }
     }
 }

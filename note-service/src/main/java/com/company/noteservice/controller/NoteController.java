@@ -39,7 +39,7 @@ public class NoteController {
     //ResponseBody: Note data
     @RequestMapping(value = "/notes/{id}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Note getNoteById(@RequestBody @PathVariable int id){
+    public Note getNoteById( @PathVariable int id){
         return dao.getNote(id);
     }
     //Get Notes by Book
@@ -50,7 +50,7 @@ public class NoteController {
     //ResponseBody: Array of Note data
     @RequestMapping(value = "/notes/book/{bookId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Note> getNotesByBook(@RequestBody @PathVariable int bookId){
+    public List<Note> getNotesByBook( @PathVariable int bookId){
         return dao.getNotesByBook(bookId);
     }
     //Get all Notes
