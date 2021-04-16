@@ -43,4 +43,40 @@ public class BookDaoJdbcTemplateImplTest {
 
         assertNull(book2);
     }
+    @Test
+    public void shouldGetAllBooks(){
+        Book book = new Book();
+        book.setTitle("Book Worm");
+        book.setAuthor("Worm");
+
+        bookDao.createBook(book);
+
+        book = new Book();
+        book.setTitle("Hello, World");
+        book.setAuthor("EARTH");
+
+        bookDao.createBook(book);
+
+        List<Book> books = bookDao.getAllBooks();
+
+        assertEquals(2, books.size());
+    }
+
+    @Test
+    public void shouldUpdateBook(){
+        Book book = new Book();
+        book.setTitle("Book Worm");
+        book.setAuthor("Worm");
+
+        bookDao.createBook(book);
+
+        book.setTitle("Hello, World");
+        book.setAuthor("EARTH");
+
+        bookDao.updateBook(book);
+
+        Book book2 = bookDao.getBookById(book.getBookId());
+
+        assertEquals(book2,book);
+    }
 }

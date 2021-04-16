@@ -93,7 +93,7 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void shouldReturnNewRecordOnPostRequest() throws Exception {
+    public void shouldReturnNewNoteOnPostRequest() throws Exception {
 
         // ARRANGE
         Note inputNote = new Note();

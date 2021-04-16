@@ -1,8 +1,7 @@
 package com.company.notequeueconsumer.util.feign;
 
 import com.company.notequeueconsumer.util.messages.Note;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.http.HttpStatus;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "note-service")
