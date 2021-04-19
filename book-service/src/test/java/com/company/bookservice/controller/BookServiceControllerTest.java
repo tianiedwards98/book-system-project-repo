@@ -1,6 +1,6 @@
 package com.company.bookservice.controller;
 
-import com.company.bookservice.dao.BookDao;
+
 import com.company.bookservice.models.Book;
 import com.company.bookservice.service.BookViewModel;
 import com.company.bookservice.service.ServiceLayer;
@@ -45,15 +45,15 @@ public class BookServiceControllerTest {
 
     @Test
     public void shouldReturnAllBooksInCollection() throws Exception {
-        Book book = new Book();
+        BookViewModel book = new BookViewModel();
         book.setTitle("Book Worm");
         book.setAuthor("Worm");
 
-        Book book2 = new Book();
+        BookViewModel book2 = new BookViewModel();
         book2.setTitle("Hello, World");
         book2.setAuthor("EARTH");
 
-        Book book3 = new Book();
+        BookViewModel book3 = new BookViewModel();
         book3.setTitle("I ruined 2020.");
         book3.setAuthor("COVID19");
 
@@ -72,14 +72,14 @@ public class BookServiceControllerTest {
         outputBook3.setTitle("I ruined 2020.");
         outputBook3.setAuthor("COVID19");
 
-        List<Book> bookList = new ArrayList<>();
+        List<BookViewModel> bookList = new ArrayList<>();
         bookList.add(book);
         bookList.add(book2);
         bookList.add(book3);
 
-        when(serviceLayer.getAllBooks()).thenReturn(bookList);
+      when(serviceLayer.getAllBooks()).thenReturn(bookList);
 
-        List<Book> listChecker = new ArrayList<>();
+        List<BookViewModel> listChecker = new ArrayList<>();
         listChecker.addAll(bookList);
         String outputJson = mapper.writeValueAsString(listChecker);
 
@@ -94,7 +94,7 @@ public class BookServiceControllerTest {
 
     @Test
     public void shouldReturnNewBookOnPostRequest() throws Exception {
-        Book book3 = new Book();
+        BookViewModel book3 = new BookViewModel();
         book3.setTitle("I ruined 2020.");
         book3.setAuthor("COVID19");
 
@@ -119,7 +119,7 @@ public class BookServiceControllerTest {
     }
     @Test
     public void shouldReturnBookById() throws Exception{
-        Book outputBook3 = new Book();
+        BookViewModel outputBook3 = new BookViewModel();
         outputBook3.setBookId(3);
         outputBook3.setTitle("I ruined 2020.");
         outputBook3.setAuthor("COVID19");
