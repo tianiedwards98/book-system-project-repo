@@ -49,7 +49,7 @@ public class ServiceLayerTest {
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
         outputBook.setBookId(1);
-        outputBook.setNotes(noteService.getNotesByBook());
+        outputBook.setNotes(noteService.getNotesByBook(outputBook.getBookId()));
 
         book = serviceLayer.createBook(book);
 
@@ -67,7 +67,7 @@ public class ServiceLayerTest {
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
         outputBook.setBookId(1);
-        outputBook.setNotes(noteService.getNotesByBook());
+        outputBook.setNotes(noteService.getNotesByBook(outputBook.getBookId()));
 
         BookViewModel bookViewModel = serviceLayer.getBookById(outputBook.getBookId());
 
@@ -92,20 +92,20 @@ public class ServiceLayerTest {
         outputBook.setBookId(1);
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
-        outputBook.setNotes(noteService.getNotesByBook());
+        outputBook.setNotes(noteService.getNotesByBook(outputBook.getBookId()));
 
 
         BookViewModel outputBook2 = new BookViewModel();
         outputBook2.setBookId(2);
         outputBook2.setTitle("Hello, World");
         outputBook2.setAuthor("EARTH");
-        outputBook2.setNotes(noteService.getNotesByBook());
+        outputBook2.setNotes(noteService.getNotesByBook(outputBook2.getBookId()));
 
         BookViewModel outputBook3 = new BookViewModel();
         outputBook3.setBookId(3);
         outputBook3.setTitle("I ruined 2020.");
         outputBook3.setAuthor("COVID19");
-        outputBook3.setNotes(noteService.getNotesByBook());
+        outputBook3.setNotes(noteService.getNotesByBook(outputBook3.getBookId()));
 
         List<Book> bookList = new ArrayList<>();
         bookList.add(book);
@@ -189,7 +189,9 @@ public class ServiceLayerTest {
         notes.add(note2);
         notes.add(note3);
 
-        doReturn(notes).when(noteService).getNotesByBook();
+        doReturn(notes).when(noteService).getNotesByBook(1);
+        doReturn(notes).when(noteService).getNotesByBook(2);
+
 
 
     }
