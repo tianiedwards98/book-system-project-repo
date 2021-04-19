@@ -31,7 +31,7 @@ public class ServiceLayer {
         bookViewModel.setBookId(book.getBookId());
         bookViewModel.setTitle(book.getTitle());
         bookViewModel.setAuthor(book.getAuthor());
-        bookViewModel.setNotes(noteService.getAllNotes());
+        bookViewModel.setNotes(noteService.getNotesByBook());
 
         return bookViewModel;
 
@@ -43,7 +43,7 @@ public class ServiceLayer {
         book = bookDao.createBook(book);
 
         bookViewModel.setBookId(book.getBookId());
-        bookViewModel.setNotes(noteService.getAllNotes());
+        bookViewModel.setNotes(noteService.getNotesByBook());
 
         return bookViewModel;
 
@@ -56,7 +56,7 @@ public class ServiceLayer {
         bvm.setBookId(book.getBookId());
         bvm.setAuthor(book.getAuthor());
         bvm.setTitle(book.getTitle());
-        bvm.setNotes(noteService.getAllNotes());
+        bvm.setNotes(noteService.getNotesByBook());
         return bvm;
     }
     public List<BookViewModel> getAllBooks(){

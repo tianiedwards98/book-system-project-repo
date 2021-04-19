@@ -10,5 +10,5 @@ import java.util.List;
 @FeignClient(name = "note-service")
 public interface NoteService {
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    List<Note> getAllNotes();
+    List<Note> getNotesByBook();
 }

@@ -49,7 +49,7 @@ public class ServiceLayerTest {
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
         outputBook.setBookId(1);
-        outputBook.setNotes(noteService.getAllNotes());
+        outputBook.setNotes(noteService.getNotesByBook());
 
         book = serviceLayer.createBook(book);
 
@@ -67,7 +67,7 @@ public class ServiceLayerTest {
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
         outputBook.setBookId(1);
-        outputBook.setNotes(noteService.getAllNotes());
+        outputBook.setNotes(noteService.getNotesByBook());
 
         BookViewModel bookViewModel = serviceLayer.getBookById(outputBook.getBookId());
 
@@ -92,20 +92,20 @@ public class ServiceLayerTest {
         outputBook.setBookId(1);
         outputBook.setTitle("Book Worm");
         outputBook.setAuthor("Worm");
-        outputBook.setNotes(noteService.getAllNotes());
+        outputBook.setNotes(noteService.getNotesByBook());
 
 
         BookViewModel outputBook2 = new BookViewModel();
         outputBook2.setBookId(2);
         outputBook2.setTitle("Hello, World");
         outputBook2.setAuthor("EARTH");
-        outputBook2.setNotes(noteService.getAllNotes());
+        outputBook2.setNotes(noteService.getNotesByBook());
 
         BookViewModel outputBook3 = new BookViewModel();
         outputBook3.setBookId(3);
         outputBook3.setTitle("I ruined 2020.");
         outputBook3.setAuthor("COVID19");
-        outputBook3.setNotes(noteService.getAllNotes());
+        outputBook3.setNotes(noteService.getNotesByBook());
 
         List<Book> bookList = new ArrayList<>();
         bookList.add(book);
@@ -189,7 +189,7 @@ public class ServiceLayerTest {
         notes.add(note2);
         notes.add(note3);
 
-        doReturn(notes).when(noteService).getAllNotes();
+        doReturn(notes).when(noteService).getNotesByBook();
 
 
     }
