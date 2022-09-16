@@ -1,4 +1,4 @@
-# book-system-project-repo
+# BookSystem
 This is a micoservices project that connects notes and books together.
 
 # What I learned
